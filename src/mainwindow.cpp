@@ -67,9 +67,8 @@ MainWindow::MainWindow(int userId, QWidget *parent)
     mainLayout->addWidget(sidebar);
 
     connect(refreshButton, &QPushButton::clicked, this, &MainWindow::onPeriodChanged);
-    connect(docButton, &QPushButton::clicked, [&]() {
-        const QString url = "https://www.energosbyt.by/ru/info-potrebitelyam/ur-l/tarify/tarify-elektro";
-        QDesktopServices::openUrl(QUrl(url));
+    connect(docButton, &QPushButton::clicked, []() {
+        BrowserActivator::openAndActivate("https://www.energosbyt.by/ru/info-potrebitelyam/ur-l/tarify/tarify-elektro");
     });
 
     onPeriodChanged();

@@ -16,9 +16,10 @@ set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
         include/mainwindow.h
-        
 	    include/loginwindow.h
 	    src/loginwindow.cpp
+        include/browseractivator.h
+        src/browseractivator.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -27,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         include/loginwindow.h src/loginwindow.cpp
         include/authutils.h src/authutils.cpp
+        include/browseractivator.h src/browseractivator.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET EnergyMonitor APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
