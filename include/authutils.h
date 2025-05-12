@@ -1,4 +1,3 @@
-// authutils.h
 #pragma once
 #include <QString>
 

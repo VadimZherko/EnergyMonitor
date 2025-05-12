@@ -12,9 +12,8 @@
 #include <QTextEdit>
 #include <QSqlQuery>
 
-//QT_CHARTS_USE_NAMESPACE
-
-    class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
@@ -31,6 +30,7 @@ private:
     QTextEdit *tipsArea;
     QComboBox *periodComboBox;
     QPushButton *refreshButton;
+    QPushButton *docButton;
 
     void loadData(const QString &period);
     void createCharts(const QString &period);
@@ -39,4 +39,4 @@ private:
     void updateAvailableMonths();
 };
 
-#endif // MAINWINDOW_H
+#endif

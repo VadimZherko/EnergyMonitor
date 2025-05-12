@@ -3,7 +3,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-class LoginWindow : public QWidget {
+class LoginWindow : public QWidget
+{
     Q_OBJECT
 public:
     LoginWindow(QWidget *parent = nullptr);

@@ -1,5 +1,3 @@
-// loginwindow.cpp
-
 #include "../include/loginwindow.h"
 #include "../include/mainwindow.h"
 #include "../include/authutils.h"
@@ -9,13 +7,13 @@
 #include <QMessageBox>
 #include <QSqlQuery>
 
-LoginWindow::LoginWindow(QWidget *parent) : QWidget(parent) {
+LoginWindow::LoginWindow(QWidget *parent) : QWidget(parent)
+{
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     setWindowTitle("Вход в систему");
-    setFixedSize(400, 300); // Фиксированный размер
+    setFixedSize(400, 300);
 
-    // Стили
     setStyleSheet(R"(
         QWidget {
             background-color: #2c3e50;
@@ -45,7 +43,6 @@ LoginWindow::LoginWindow(QWidget *parent) : QWidget(parent) {
         }
     )");
 
-    // Логотип
     QLabel *logo = new QLabel("ЭнергоМонитор");
     logo->setStyleSheet("font-size: 24px; color: #3498db; font-weight: bold;");
     logo->setAlignment(Qt::AlignCenter);
@@ -68,7 +65,8 @@ LoginWindow::LoginWindow(QWidget *parent) : QWidget(parent) {
     connect(loginButton, &QPushButton::clicked, this, &LoginWindow::onLoginClicked);
 }
 
-void LoginWindow::onLoginClicked() {
+void LoginWindow::onLoginClicked()
+{
     int house = houseInput->text().toInt();
     int apartment = apartmentInput->text().toInt();
     QString password = passwordInput->text();
@@ -79,7 +77,8 @@ void LoginWindow::onLoginClicked() {
     query.addBindValue(house);
     query.addBindValue(apartment);
 
-    if (!query.exec() || !query.next()) {
+    if (!query.exec() || !query.next())
+    {
         QMessageBox::warning(this, "Ошибка", "Пользователь не найден");
         return;
     }
@@ -88,7 +87,8 @@ void LoginWindow::onLoginClicked() {
     QString salt = query.value(2).toString();
     QString inputHash = hashPassword(password, salt);
 
-    if (inputHash == storedHash) {
+    if (inputHash == storedHash)
+    {
         MainWindow *mainWin = new MainWindow(query.value(0).toInt());
         mainWin->show();
         this->close();

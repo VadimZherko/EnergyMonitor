@@ -1,5 +1,3 @@
-//#include "mainwindow.h"
-
 #include <QApplication>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -7,20 +5,20 @@
 #include <QSqlError>
 #include "../include/loginwindow.h"
 
-#define STRINGIFY(x) #x
-#define EXPAND_STRING(x) STRINGIFY(x)
-
-void initDatabase() {
+void initDatabase()
+{
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("/home/vadim/repository/EnergyMonitor/db/energy.db");
 
-    if (!db.open()) {
+    if (!db.open())
+    {
         qDebug() << "Ошибка подключения к БД:" << db.lastError().text();
         return;
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QApplication a(argc, argv);
     initDatabase();
 
